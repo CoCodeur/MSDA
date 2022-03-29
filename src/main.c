@@ -14,12 +14,12 @@
 int main(){
    
    const struct CMUnitTest tests[] =
-    {
-		cmocka_unit_test(add_test),
-		cmocka_unit_test(add_test_2),
-		cmocka_unit_test(add_test_3),
+    {	
+		cmocka_unit_test(add_test_1_2),
+		cmocka_unit_test(add_test_2_2),
+		cmocka_unit_test(add_test_3_2),
+		
     };
 
     return cmocka_run_group_tests(tests, NULL, NULL);
-
 }
