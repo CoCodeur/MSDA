@@ -37,6 +37,6 @@ jobs:
     
     - name: Running 
       working-directory: ${{github.workspace}}/bin
-      run: ./${{github.workspace}}
+      run: ./MDSA
       
       
