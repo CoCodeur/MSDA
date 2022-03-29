@@ -7,6 +7,11 @@ project(MDSA VERSION 1.0 LANGUAGES C)
 #adding cmocka library 
 include("${CMAKE_CURRENT_SOURCE_DIR}/lib/FetchCMocka.cmake")
 
+# Compile the passed source files into an executable 
+add_executable(MDSA 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/main.c")
+target_compile_features(MDSA PRIVATE c_std_99)
+
 #adding add library
 
 add_library(
@@ -21,20 +26,10 @@ add_library(
     "${CMAKE_CURRENT_SOURCE_DIR}/test/add/add_test.c"
 )
 
-add_library(
-    main_test
-    "${CMAKE_CURRENT_SOURCE_DIR}/test/main_test.h"
-    "${CMAKE_CURRENT_SOURCE_DIR}/test/main_test.c"  
-)
-
-# Compile the passed source files into an executable 
-add_executable(MDSA 
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/main.c")
 
 #link add to main 
 target_link_libraries(add_t PRIVATE add cmocka-static)
-target_link_libraries(main_test PRIVATE add_t cmocka-static)
-target_link_libraries(MDSA PRIVATE add main_test)
+target_link_libraries(MDSA PRIVATE cmocka-static add_t)
 
 
 #add testing with cmocka
