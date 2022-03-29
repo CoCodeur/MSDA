@@ -33,8 +33,7 @@ jobs:
       working-directory: ${{github.workspace}}/build
       # Execute tests defined by the CMake configuration.  
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-      run: ctest -C ${{github.workspace}}
-      run: cat Testing/Temporary/LastTest.log
+      run: ctest -C ${{github.workspace}} && cat Testing/Temporary/LastTest.log
     
     - name: Running 
       working-directory: ${{github.workspace}}/bin
