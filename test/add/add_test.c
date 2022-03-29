@@ -11,7 +11,7 @@ void add_test_2_2(void **state){
      assert_true(add(2,2) == 4);
 }
 void add_test_3_2(void **state){
-     assert_true(add(3,2) == 5);
+     assert_true(add(3,2) == 6);
 }
 
 
