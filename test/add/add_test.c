@@ -6,5 +6,5 @@
 #include "../../include/add.h"
 
 void add_test(void **state){
-     assert_true(add(1,2) == 3);
+     assert_true(add(1,1) == 3);
 }
