@@ -8,3 +8,7 @@
 void add_test(void **state){
      assert_true(add(1,2) == 3);
 }
+void add_test_2(void **state){
+     assert_true(add(1,21) == 3);
+}
+
