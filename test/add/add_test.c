@@ -2,7 +2,6 @@
 #include <setjmp.h>
 #include <stddef.h>
 #include <cmocka.h>
-#include "add_test.h"
 #include "../../include/add.h"
 
 void add_test_1_2(void **state){
@@ -13,5 +12,16 @@ void add_test_2_2(void **state){
 }
 void add_test_3_2(void **state){
      assert_true(add(3,2) == 5);
+}
+
+
+
+int main(){
+    const struct CMUnitTest tests[] = {
+                cmocka_unit_test(add_test_1_2),
+                cmocka_unit_test(add_test_2_2),
+                cmocka_unit_test(add_test_3_2),
+        };
+    return cmocka_run_group_tests(tests, NULL, NULL);
 }
 
