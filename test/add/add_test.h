@@ -5,3 +5,4 @@
  */
 void add_test(void **state);
 void add_test_2(void **state);
+void add_test_3(void **state);
