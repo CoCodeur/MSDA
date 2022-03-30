@@ -6,7 +6,7 @@
 
 static void test_init()
 {
-    assert_int_equal(1, 1);
+    assert_int_equal(2, 1);
 }
 
 int main(){
