@@ -1,12 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include "../include/linkedlist.h"
 
 /**
  * @brief Main program
- * 
- * @return int 
+ *
+ * @return int
  */
 
 int main(){
-   printf("Hello World");
+
    return 0;
 }

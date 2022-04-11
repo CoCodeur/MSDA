@@ -104,6 +104,8 @@ add_test(NAME TREE COMMAND TREE)
 
 #---------------------------------------------#
 
+target_link_libraries(MDSA PRIVATE linkedlist)
+
 
 # Set the output directory for executables
 set_target_properties(MDSA
