@@ -41,18 +41,12 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: cat ./Testing/Temporary/LastTest.log
 
-    - name: Install SSH Key
-      uses: shimataro/ssh-key-action@v2
-      with:
-        key: ${{ secrets.DATASAFE_TEST_SERVER }} 
-        known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
-      
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@main
       env:
           SSH_PRIVATE_KEY: ${{ secrets.DATASAFE_TEST_SERVER }} 
           ARGS: "-rltgoDzvO --delete"
-          SOURCE: "dist/"
+          SOURCE: "./"
           REMOTE_HOST: ${{ secrets.DATASAFE_TEST_HOST }}
           REMOTE_USER: ${{ secrets.DATASAFE_TEST_USER }}
           TARGET: "./"
