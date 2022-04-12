@@ -1,5 +1,5 @@
 # Specify the minimum version of CMake that can run this script
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.10)
 
 # Project name and version
 project(MDSA VERSION 1.0 LANGUAGES C)
