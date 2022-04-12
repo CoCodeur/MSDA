@@ -98,8 +98,23 @@
      * @return NODE : first node searched with value or nothing if not found
      */
     struct NODE linkedlist__search_node(struct NODE *head, struct NODE value);
+    
+    /**
+     * @brief Delete the nodes of linkedlist by free memory
+     * 
+     * @param head 
+     */
+
+    void linkedlist__clear_node(struct NODE **head);
+
+    /**
+     * @brief Destroy linkedlist and free memory
+     * @param linkedlist
+     */
+    void linkedlist__destroy(struct LINKEDLIST ** linkedlist);
 
 
     #pragma endregion Methods
 
     #endif
+

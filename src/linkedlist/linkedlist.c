@@ -134,8 +134,31 @@ int linkedlist__delete_tail(struct LINKEDLIST * linkedlist){
         return data;
     }
 }
-     
 
+
+void linkedlist__clear_node(struct NODE** head)
+{
+    printf("Deleting %d\n", (*head)->value);
+    if (*head == NULL) {
+        return;
+    }
+ 
+    if ((*head)->next) {
+        linkedlist__clear_node(&((*head)->next));
+    }
+ 
+    free(*head);
+ 
+    *head = NULL;
+    
+}
+
+void linkedlist__destroy(struct LINKEDLIST **linkedlist){
+    linkedlist__clear_node(&(*linkedlist)->head);
+    (*linkedlist)->size = 0;
+    free(*linkedlist);
+    *linkedlist = NULL;
+}
 
 void linkedlist__display(struct LINKEDLIST *linkedlist){
     struct NODE * traversal = linkedlist->head;
