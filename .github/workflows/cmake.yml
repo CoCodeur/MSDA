@@ -41,14 +41,13 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: cat ./Testing/Temporary/LastTest.log
 
-    - name: Deploy to Server
+    - name: Deploy to Staging server
       uses: easingthemes/ssh-deploy@main
       env:
-          SSH_PRIVATE_KEY: ${{ secrets.DATASAFE_TEST_SERVER }} 
-          ARGS: "-rltgoDzvO --delete"
-          SOURCE: "./"
-          REMOTE_HOST: ${{ secrets.DATASAFE_TEST_HOST }}
-          REMOTE_USER: ${{ secrets.DATASAFE_TEST_USER }}
-          TARGET: "./"
-          EXCLUDE: "/test/ , testing.sh, /build/"
-      
+        SSH_PRIVATE_KEY: ${{ secrets.DATASAFE_TEST_SERVER }}
+        ARGS: "-rltgoDzvO"
+        SOURCE: "./"
+        REMOTE_HOST: ${{ secrets.DATASAFE_TEST_HOST }}
+        REMOTE_USER: ${{ secrets.DATASAFE_TEST_USER }}
+        TARGET: "/MDSA/"
+        EXCLUDE: "/test/"
