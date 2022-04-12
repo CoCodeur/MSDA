@@ -46,9 +46,9 @@ jobs:
       env:
           SSH_PRIVATE_KEY: ${{ secrets.DATASAFE_TEST_SERVER }} 
           ARGS: "-rltgoDzvO --delete"
-          SOURCE: "/MDSA"
+          SOURCE: "./"
           REMOTE_HOST: ${{ secrets.DATASAFE_TEST_HOST }}
           REMOTE_USER: ${{ secrets.DATASAFE_TEST_USER }}
-          TARGET: "./"
+          TARGET: "./MDSA"
           EXCLUDE: "/test/ , testing.sh, /build/"
       
