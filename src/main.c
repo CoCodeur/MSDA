@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/linkedlist.h"
 
 /**
  * @brief Main program
@@ -10,5 +9,6 @@
 
 int main(){
 
+   printf("Hello World!\n");
    return 0;
 }

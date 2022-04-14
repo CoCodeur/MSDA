@@ -4,8 +4,6 @@ cmake_minimum_required(VERSION 3.10)
 # Project name and version
 project(MDSA VERSION 1.0 LANGUAGES C)
 
-#adding cmocka library 
-include("${CMAKE_CURRENT_SOURCE_DIR}/lib/FetchCMocka.cmake")
 
 # Compile the passed source files into an executable 
 add_executable(MDSA 
@@ -40,11 +38,7 @@ add_library(
     "${CMAKE_CURRENT_SOURCE_DIR}/include/heap.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/heap/heap.c"   
 )
-add_library(
-    linkedlist
-    "${CMAKE_CURRENT_SOURCE_DIR}/include/linkedlist.h"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/linkedlist/linkedlist.c"   
-)
+
 add_library(
     queue
     "${CMAKE_CURRENT_SOURCE_DIR}/include/queue.h"
@@ -55,57 +49,42 @@ add_library(
     "${CMAKE_CURRENT_SOURCE_DIR}/include/stack.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/stack/stack.c"   
 )
+
 add_library(
     tree
     "${CMAKE_CURRENT_SOURCE_DIR}/include/tree.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/tree/tree.c"   
 )
 
+add_library(
+    doublylinkedlist
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/doublylinkedlist.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/doublylinkedlist/doublylinkedlist.c"
+    )
+
+
+#--------------------- TESTING ------------------------#
+    if(IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/test/")
+
+        include("${CMAKE_CURRENT_SOURCE_DIR}/lib/FetchCMocka.cmake")
+
+        #---------------- LINKEDLIST ----------------------#
+        add_executable(LINKEDLIST "${CMAKE_CURRENT_SOURCE_DIR}/test/linkedlist/linkedlist_test.c")
+        target_link_libraries(LINKEDLIST PRIVATE doublylinkedlist cmocka-static)
+
+        #---------------- STACK ----------------------#
+        add_executable(STACK_TEST "${CMAKE_CURRENT_SOURCE_DIR}/test/stack/stack_test.c")
+        target_link_libraries(STACK_TEST PRIVATE stack cmocka-static)
+
+
+        enable_testing()
+        add_test(NAME LINKEDLIST COMMAND LINKEDLIST)
+        add_test(NAME STACK_TEST COMMAND STACK_TEST)
+       
+
+    endif()
+    
 #---------------------------------------------#
-
-#------------------- TESTS -------------------#
-enable_testing()
-
-add_executable(ARRAY "${CMAKE_CURRENT_SOURCE_DIR}/test/array/array_test.c")
-target_link_libraries(ARRAY PRIVATE array cmocka-static)
-add_test(NAME ARRAY COMMAND ARRAY)
-
-add_executable(GRAPH "${CMAKE_CURRENT_SOURCE_DIR}/test/graph/graph_test.c")
-target_link_libraries(GRAPH PRIVATE graph cmocka-static)
-add_test(NAME GRAPH COMMAND GRAPH)
-
-add_executable(HASHSET "${CMAKE_CURRENT_SOURCE_DIR}/test/hashset/hashset_test.c")
-target_link_libraries(HASHSET PRIVATE hashset cmocka-static)
-add_test(NAME HASHSET COMMAND HASHSET)
-
-add_executable(HASHTABLE "${CMAKE_CURRENT_SOURCE_DIR}/test/hashtable/hashtable_test.c")
-target_link_libraries(HASHTABLE PRIVATE hashtable cmocka-static)
-add_test(NAME HASHTABLE COMMAND HASHTABLE)
-
-add_executable(HEAP "${CMAKE_CURRENT_SOURCE_DIR}/test/heap/heap_test.c")
-target_link_libraries(HEAP PRIVATE heap cmocka-static)
-add_test(NAME HEAP COMMAND HEAP)
-
-add_executable(LINKEDLIST "${CMAKE_CURRENT_SOURCE_DIR}/test/linkedlist/linkedlist_test.c")
-target_link_libraries(LINKEDLIST PRIVATE linkedlist cmocka-static)
-add_test(NAME LINKEDLIST COMMAND LINKEDLIST)
-
-add_executable(QUEUE "${CMAKE_CURRENT_SOURCE_DIR}/test/queue/queue_test.c")
-target_link_libraries(QUEUE PRIVATE queue cmocka-static)
-add_test(NAME QUEUE COMMAND QUEUE)
-
-add_executable(STACK "${CMAKE_CURRENT_SOURCE_DIR}/test/stack/stack_test.c")
-target_link_libraries(STACK PRIVATE stack cmocka-static)
-add_test(NAME STACK COMMAND STACK)
-
-add_executable(TREE "${CMAKE_CURRENT_SOURCE_DIR}/test/tree/tree_test.c")
-target_link_libraries(TREE PRIVATE tree cmocka-static)
-add_test(NAME TREE COMMAND TREE)
-
-#---------------------------------------------#
-
-target_link_libraries(MDSA PRIVATE linkedlist)
-
 
 # Set the output directory for executables
 set_target_properties(MDSA

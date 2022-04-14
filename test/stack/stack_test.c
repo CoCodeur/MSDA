@@ -3,6 +3,7 @@
 #include <setjmp.h>
 #include <cmocka.h>
 
+#include "../../include/stack.h"
 
 static void test_init()
 {

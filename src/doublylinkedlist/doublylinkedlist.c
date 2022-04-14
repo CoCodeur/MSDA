@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "../../include/linkedlist.h"
+#include "../../include/doublylinkedlist.h"
 
 static struct NODE * linkedlist__new_node(int value){
     struct NODE* node = (struct NODE*) malloc(sizeof(struct NODE));

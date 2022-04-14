@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include <setjmp.h>
 #include <cmocka.h>
-#include "../../include/linkedlist.h"
+#include "../../include/doublylinkedlist.h"
 
 static void test_init_linkedlist()
 {
