@@ -50,4 +50,4 @@ jobs:
         REMOTE_HOST: ${{ secrets.DATASAFE_TEST_HOST }}
         REMOTE_USER: ${{ secrets.DATASAFE_TEST_USER }}
         TARGET: "./MDSA/"
-        EXCLUDE: "/test/ testing.sh /build/"
+        EXCLUDE: "/test/ ./testing.sh /build/"
